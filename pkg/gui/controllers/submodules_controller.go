@@ -96,6 +96,7 @@ func (self *SubmodulesController) GetKeybindings(opts types.KeybindingsOpts) []*
 			OpensMenu:   true,
 		},
 		{
+			Keys:        opts.GetKeys(opts.Config.Submodules.Snake),
 			Handler:     self.easterEgg,
 			Description: self.c.Tr.EasterEgg,
 		},

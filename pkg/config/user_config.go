@@ -691,6 +691,7 @@ type KeybindingSubmodulesConfig struct {
 	Init     Keybinding `yaml:"init"`
 	Update   Keybinding `yaml:"update"`
 	BulkMenu Keybinding `yaml:"bulkMenu"`
+	Snake    Keybinding `yaml:"snake"`
 }
 
 type KeybindingCommitMessageConfig struct {

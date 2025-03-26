@@ -60,9 +60,9 @@ func (self *SnakeHelper) drawSnakeGame(cells [][]snake.CellType) string {
 			case snake.None:
 				writer.WriteString(" ")
 			case snake.Snake:
-				writer.WriteString("█")
+				writer.WriteString(style.FgGreen.Sprint("█"))
 			case snake.Food:
-				writer.WriteString(style.FgMagenta.Sprint("█"))
+				writer.WriteString(style.FgRed.Sprint(""))
 			}
 		}
 
