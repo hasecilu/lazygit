@@ -91,6 +91,7 @@ func (self *Game) SetDirection(direction Direction) {
 func (self *Game) gameLoop() {
 	state := self.initializeState()
 	var alive bool
+	var verticalTickCounter int
 
 	self.render(self.getCells(state), true)
 
@@ -103,6 +104,14 @@ func (self *Game) gameLoop() {
 		case dir := <-self.setNewDir:
 			state.direction = self.newDirection(state, dir)
 		case <-ticker.C:
+			// NOTE: the aspect ratio of the cursor is 2 to 1
+			if state.direction == Up || state.direction == Down {
+				verticalTickCounter++
+				if verticalTickCounter < 2 {
+					continue
+				}
+				verticalTickCounter = 0
+			}
 			state, alive = self.tick(state)
 			self.render(self.getCells(state), alive)
 			if !alive {
